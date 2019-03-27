@@ -7,7 +7,7 @@ spring:
     active: prod
   datasource:
     druid:
-      url: jdbc:mysql://106.15.177.166:3306/excel?useUnicode=true&characterEncoding=utf-8
+      url: jdbc:mysql://106.15.177.166:3306/excel?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
       username: root
       password: root
       driver-class-name: com.mysql.cj.jdbc.Driver
@@ -35,8 +35,6 @@ spring:
       connection-properties:
         druid.stat.mergeSql: true
         durid.stat.slowSqlMillis: 500
-  jackson:
-    time-zone: GMT+8
 
 # mybatis
 mybatis:
@@ -48,7 +46,7 @@ mybatis:
 # tkmapper
 mapper:
   mappers:
-    - tk.mybatis.mapper.common.BaseMapper
+    - tk.mybatis.mapper.common.Mapper
   identity: MYSQL
   style: normal
 
@@ -58,9 +56,14 @@ pagehelper:
   reasonable: true
   row-bounds-with-count: true
   support-methods-arguments: true
+  params: count=countSql
 
 # 日志配置文件
 #logging:
 #  config: classpath:logback.xml
-
-
+logging:
+  level:
+    com:
+      study:
+        excel:
+          mapper: debug

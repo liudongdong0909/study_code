@@ -1,12 +1,11 @@
 package com.study.excel.mapper;
 
 import com.study.excel.model.BankFlow;
-import org.springframework.stereotype.Repository;
-import tk.mybatis.mapper.common.BaseMapper;
+import tk.mybatis.mapper.common.Mapper;
 
 /**
  * @author walle
  */
-@Repository
-public interface BankFlowMapper extends BaseMapper<BankFlow> {
+@org.apache.ibatis.annotations.Mapper
+public interface BankFlowMapper extends Mapper<BankFlow> {
 }

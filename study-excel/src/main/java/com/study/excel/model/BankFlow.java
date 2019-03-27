@@ -1,14 +1,13 @@
 package com.study.excel.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @author walle
@@ -21,8 +20,7 @@ public class BankFlow {
     @Id
     private Integer bankId;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date startDate;
+    private LocalDate startDate;
 
     private String description;
 
@@ -30,12 +28,11 @@ public class BankFlow {
 
     private BigDecimal amount;
 
-    private String amountType;
+    private Integer amountType;
 
     private BigDecimal balance;
 
-    private String balanceType;
+    private Integer balanceType;
 
-    @JsonIgnore
-    private Date createTime;
+    private LocalDateTime createTime;
 }

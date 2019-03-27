@@ -22,6 +22,7 @@
         <guava.version>27.0-jre</guava.version>
         <poi.version>3.17</poi.version>
         <apache.common.version>3.8.1</apache.common.version>
+        <mybatis-typehandlers.version>1.0.1</mybatis-typehandlers.version>
     </properties>
 
     <dependencies>
@@ -74,6 +75,15 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-typehandlers-jsr310</artifactId>
+            <version>${mybatis-typehandlers.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
         <!-- 处理Excel2007-->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -88,6 +98,21 @@
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
