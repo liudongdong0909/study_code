@@ -7,6 +7,7 @@ spring:
     active: prod
   datasource:
     druid:
+      # https://segmentfault.com/q/1010000010791397/a-1020000010819828 => 解释了为什么要加 serverTimezone=GMT+8  => 使用UTF8/URL加密
       url: jdbc:mysql://106.15.177.166:3306/excel?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
       username: root
       password: root
