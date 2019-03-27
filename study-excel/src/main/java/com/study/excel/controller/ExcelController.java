@@ -21,13 +21,14 @@ public class ExcelController {
 
     @GetMapping("/list")
     public List<BankFlow> queryList(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate) {
-        BankFlow bankFlow = new BankFlow();
-        bankFlow.setStartDate(startDate);
+        BankFlow bankFlow = BankFlow.builder()
+                                    .startDate(startDate)
+                                    .build();
         return bankFlowService.queryListByWhere(bankFlow);
     }
 
     @PostMapping("/save")
-    public BankFlow save(@RequestBody BankFlow bankFlow){
+    public BankFlow save(@RequestBody BankFlow bankFlow) {
         return bankFlow;
     }
 }

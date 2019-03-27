@@ -1,7 +1,6 @@
 package com.study.excel.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,6 +13,9 @@ import java.time.LocalDateTime;
  */
 @Setter
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "bank_flow")
 public class BankFlow {
 
