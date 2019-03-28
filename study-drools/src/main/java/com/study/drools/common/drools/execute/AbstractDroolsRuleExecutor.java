@@ -90,8 +90,10 @@ public abstract class AbstractDroolsRuleExecutor implements DroolsRuleExecutor {
                 log.info("开始执行组 [{}] - [{}] 规则 [{}]", riskRuleCategoryEnum.getMessage(), riskRuleCategoryEnum.getValue(), riskRuleName);
 
                 // 获取 kieRuleName对应的规则需要的参数
-                RiskRuleParamsDto riskRuleParams = riskRuleGroupTaskFactory.getRiskRuleGroupExecutor(riskRuleCategoryEnum)
-                        .getRiskRuleParams(riskRuleName, riskExecuteRequestDto);
+                RiskRuleParamsDto riskRuleParams = riskRuleGroupTaskFactory
+                                                        .getRiskRuleGroupExecutor(riskRuleCategoryEnum)
+                                                        .getRiskRuleParams(riskRuleName, riskExecuteRequestDto);
+
                 // 记录规则执行结果
                 RiskExecuteResponseDto riskExecuteResponse = new RiskExecuteResponseDto();
                 riskExecuteResponse.setRuleId(riskRule.getId());
