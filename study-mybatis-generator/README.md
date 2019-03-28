@@ -1,6 +1,9 @@
 # Getting Started
 
 ### Guides
+
+时间属性使用java8中的 localdate, localdatetime, localtime 
+
 ```
 /*
  Navicat Premium Data Transfer

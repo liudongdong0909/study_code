@@ -25,7 +25,7 @@
 
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://106.15.177.166:3306/test"
+                        connectionURL="jdbc:mysql://106.15.177.166:3306/drools"
                         userId="root"
                         password="root">
         </jdbcConnection>
@@ -40,8 +40,8 @@
         </javaTypeResolver>
 
         <!-- targetProject:生成PO类的位置 -->
-        <javaModelGenerator targetPackage="com.study.generator.model"
-                            targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.study.drools.model"
+                            targetProject="../study-drools/src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
             <!-- 从数据库返回的值被清理前后的空格 -->
@@ -49,22 +49,22 @@
         </javaModelGenerator>
 
         <!-- targetProject:mapper映射文件生成的位置 -->
-        <sqlMapGenerator targetPackage="com.study.generator.mapper"
-                         targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="com.study.drools.mapper"
+                         targetProject="../study-drools/src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
         <!-- targetPackage：mapper接口生成的位置 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.study.generator.mapper"
-                             targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.study.drools.mapper"
+                             targetProject="../study-drools/src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
         <!-- 指定数据库表 -->
 
-        <table schema="" tableName="test" enableCountByExample="fale"
+        <table schema="" tableName="risk_rule" enableCountByExample="fale"
                enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false"></table>
 

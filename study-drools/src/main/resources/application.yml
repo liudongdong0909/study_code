@@ -1,1 +1,69 @@
+server:
+  port: 9091
+  servlet:
+    context-path: /
+spring:
+  profiles:
+    active: prod
+  datasource:
+    druid:
+      # https://segmentfault.com/q/1010000010791397/a-1020000010819828 => 解释了为什么要加 serverTimezone=GMT+8  => 使用UTF8/URL加密
+      url: jdbc:mysql://106.15.177.166:3306/drools?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      # 初始化时建立物理连接的个数
+      initial-size: 5
+      # 最大连接池数量
+      max-active: 30
+      # 最小连接池数量
+      min-idle: 5
+      # 获取连接时最大等待时间，单位毫
+      max-wait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      # 连接保持空闲而不被驱逐的最小时间
+      min-evictable-idle-time-millis: 300000
+      # 用来检测连接是否有效的sql，要求是一个查询语句
+      validation-query: SELECT 1 FROM DUAL
+      # 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+      test-while-idle: true
+      # 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+      test-on-borrow: false
+      # 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能
+      test-on-return: false
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connection-properties:
+        druid.stat.mergeSql: true
+        durid.stat.slowSqlMillis: 500
 
+# mybatis
+mybatis:
+  mapper-locations: classpath:com.study.drools.mapper/*.xml
+  type-aliases-package: com.study.drools.model
+  configuration:
+    map-underscore-to-camel-case: false
+
+# tkmapper
+mapper:
+  mappers:
+    - tk.mybatis.mapper.common.Mapper
+  identity: MYSQL
+
+# pageHelper
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  row-bounds-with-count: true
+  support-methods-arguments: true
+  params: count=countSql
+
+# 日志配置文件
+#logging:
+#  config: classpath:logback.xml
+logging:
+  level:
+    com:
+      study:
+        excel:
+          mapper: debug
