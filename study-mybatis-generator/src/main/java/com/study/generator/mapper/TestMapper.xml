@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.generator.mapper.TestMapper">
+  <resultMap id="BaseResultMap" type="com.study.generator.model.Test">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="registerTime" jdbcType="TIME" property="registertime" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.study.generator.model.Test">
+    insert into test (id, user_id, birthday, 
+      registerTime, createTime, updateTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, 
+      #{registertime,jdbcType=TIME}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.study.generator.model.Test">
+    insert into test
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="registertime != null">
+        registerTime,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="registertime != null">
+        #{registertime,jdbcType=TIME},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

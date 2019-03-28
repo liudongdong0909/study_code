@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!-- 本地数据库连接jar -->
+    <!-- <classPathEntry location="D:/Users/apple/Documents/Repositories/ZJG/mysql/mysql-connector-java/8.0.15/mysql-connector-java-8.0.15.jar"/>
+ -->
+    <context id="testTables" targetRuntime="MyBatis3">
+
+        <!--<commentGenerator>
+            &lt;!&ndash; 是否去除自动生成的注释 true：是 ： false:否 &ndash;&gt;
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>-->
+        <commentGenerator>
+            <property name="javaFileEncoding" value="UTF-8"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <!--建议一定要保留suppressAllComments属性(使用默认值false)，
+            一定要取消(设为true)时间戳suppressDate，避免重复提交SVN。-->
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://106.15.177.166:3306/test"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL
+            和 NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+            <!-- 此属性用于指定MyBatis生成器是否应强制对日期、时间和和时间戳字段，
+            生成JDK8的时间类型，而不是使用java.util.date -->
+            <property name="useJSR310Types" value="true"/>
+        </javaTypeResolver>
+
+        <!-- targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="com.study.generator.model"
+                            targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <!--<property name="trimStrings" value="true" />-->
+        </javaModelGenerator>
+
+        <!-- targetProject:mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="com.study.generator.mapper"
+                         targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.study.generator.mapper"
+                             targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!-- 指定数据库表 -->
+
+        <table schema="" tableName="test" enableCountByExample="fale"
+               enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false"></table>
+
+
+    </context>
+</generatorConfiguration>
